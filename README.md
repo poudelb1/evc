@@ -1,8 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a Next.js app with clean registration and login pages. Registration is connected to MongoDB and securely hashes passwords before storage.
 
 ## Getting Started
 
-First, run the development server:
+Copy `.env.example` to `.env.local`, then set your MongoDB connection string:
+
+```bash
+MONGODB_URI=mongodb://127.0.0.1:27017
+MONGODB_DB=evc
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
