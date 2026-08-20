@@ -2,12 +2,23 @@ This is a Next.js app with clean registration and login pages. Registration is c
 
 ## Getting Started
 
-Copy `.env.example` to `.env.local`, then set your MongoDB connection string:
+Copy `.env.example` to `.env.local`, then set MongoDB and Auth.js configuration:
 
 ```bash
 MONGODB_URI=mongodb://127.0.0.1:27017
 MONGODB_DB=evc
+AUTH_SECRET=replace-with-a-random-secret
+AUTH_GOOGLE_ID=your-google-oauth-client-id
+AUTH_GOOGLE_SECRET=your-google-oauth-client-secret
 ```
+
+Generate `AUTH_SECRET` with `npx auth secret`. In Google Cloud Console, add
+`http://localhost:3000/api/auth/callback/google` as an authorized redirect URI
+(and the equivalent `/api/auth/callback/google` URL for production).
+
+Both login methods run on the server. Credentials are checked against the bcrypt
+hash in MongoDB, and the Google button calls a server action that starts the OAuth
+flow through the Auth.js backend route.
 
 Then run the development server:
 
